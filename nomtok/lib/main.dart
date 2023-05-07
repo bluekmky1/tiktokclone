@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nomtok/constants/Sizes.dart';
-import 'package:nomtok/features/auth/sign_up_screen.dart';
+import 'package:nomtok/features/navigation/main_navigation_screen.dart';
 
 void main() {
   runApp(const TiktokApp());
@@ -29,7 +29,7 @@ class TiktokApp extends StatelessWidget {
         ),
         primaryColor: const Color.fromARGB(255, 238, 29, 82),
       ),
-      home: const SignUpScreen(),
+      home: const MainNavigationScren(),
     );
   }
 }

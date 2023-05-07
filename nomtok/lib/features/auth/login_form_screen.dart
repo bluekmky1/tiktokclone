@@ -24,10 +24,14 @@ class _LoginFormScreenState extends State<LoginFormScreen> {
         // .save()를 실행하면 onSaved 콜백이 실행되면서 각 필드의 onSaved: (newValue)에
         // 값이 저장된다. 콜백함수를 이용하여 다른 작업을 할 수 있다.
         _formkey.currentState!.save();
-        Navigator.of(context).push(
+        Navigator.of(context).pushAndRemoveUntil(
           MaterialPageRoute(
             builder: (context) => const InterestsScreen(),
           ),
+          // 이전 라우트를 유지할지 안할지 결정하는 함수
+          (route) {
+            return false;
+          },
         );
       }
     }
@@ -70,11 +74,8 @@ class _LoginFormScreenState extends State<LoginFormScreen> {
                 // validator 유효성 검사를 한 후 에러메세지(문자열)를 반환해 준다.
                 // 문자열을 반환 할수도 안할 수도 있다.
                 validator: (value) {
-                  if (value == null) {
-                    return "null";
-                  }
-                  if (value.length < 8) {
-                    return "length";
+                  if (value == "") {
+                    return "write Something";
                   }
                   return null;
                 },
